@@ -25,6 +25,9 @@ namespace ProductCatalog.Infra.IoC.Configurations
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
+            var myhandlers = AppDomain.CurrentDomain.Load("ProductCatalog.Application");
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(myhandlers));
+
             return services;
         }
     }
