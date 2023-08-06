@@ -4,6 +4,7 @@ using ProductCatalog.Application.DTOs;
 using ProductCatalog.Application.Interfaces;
 using ProductCatalog.Application.Products.Commands;
 using ProductCatalog.Application.Products.Queries;
+using ProductCatalog.Domain.Interfaces;
 
 namespace ProductCatalog.Application.Services
 {
@@ -11,24 +12,31 @@ namespace ProductCatalog.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(IMapper mapper, IMediator mediator)
+        public ProductService(IMapper mapper, IMediator mediator, IProductRepository productRepository)
         {
             _mapper = mapper;
             _mediator = mediator;
+            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
-            var productsQuery = new GetProductsQuery();
+            var products = await _productRepository.GetProductsAsync();
+            var productDTOs = _mapper.Map<IEnumerable<ProductDTO>>(products);
 
-            if (productsQuery == null) 
+            foreach (var productDTO in productDTOs)
             {
-                throw new Exception($"Entity could not be loaded.");
+                // Buscar o nome da categoria pelo ID do relacionamento e atribuir à propriedade CategoryName
+                var product = products.FirstOrDefault(p => p.Id == productDTO.Id);
+                if (product != null && product.Category != null)
+                {
+                    productDTO.CategoryName = product.Category.Name;
+                }
             }
 
-            var result = await _mediator.Send(productsQuery);
-            return _mapper.Map<IEnumerable<ProductDTO>>(result);
+            return productDTOs;
         }
 
         public async Task<ProductDTO> GetById(int? id)

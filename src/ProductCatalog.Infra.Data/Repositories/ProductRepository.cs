@@ -21,7 +21,7 @@ namespace ProductCatalog.Infra.Data.Repositories
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            return await _productContext.Products.ToListAsync();
+            return await _productContext.Products.Include(p => p.Category).ToListAsync();
         }
 
         public async Task<Product> RemoveAsync(Product product)

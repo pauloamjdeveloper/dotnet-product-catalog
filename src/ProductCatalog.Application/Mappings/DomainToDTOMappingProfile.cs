@@ -9,7 +9,8 @@ namespace ProductCatalog.Application.Mappings
         public DomainToDTOMappingProfile()
         {
             CreateMap<Category, CategoryDTO>().ReverseMap();
-            CreateMap<Product, ProductDTO>().ReverseMap();
+            CreateMap<Product, ProductDTO>()
+            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
         }
     }
 }

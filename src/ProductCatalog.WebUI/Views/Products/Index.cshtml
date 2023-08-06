@@ -29,19 +29,19 @@
         <thead>
             <tr>
                 <th>
-                    Nome
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    Descrição
+                    @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
-                    Preço
+                    @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
-                    Estoque
+                    @Html.DisplayNameFor(model => model.Stock)
                 </th>
                 <th>
-                    Categoria
+                    @Html.DisplayNameFor(model => model.CategoryName)
                 </th>
                 <th>
                     Ações
@@ -65,7 +65,7 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CategoryId)
+                        @Html.DisplayFor(modelItem => item.CategoryName)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="btn btn-outline-success">
