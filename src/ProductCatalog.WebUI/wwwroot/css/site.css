@@ -1,3 +1,12 @@
+:root {
+    --title-color: #1E90FF;
+    --text-color: #FFFFFF;
+    --delete-color: #FF0000;
+    --sucess-color: #32CD32;
+    --info-color: #00BFFF;
+    --return-color: #363636;
+}
+
 html {
   font-size: 14px;
 }
@@ -15,4 +24,69 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.title-page {
+    color: var(--title-color);
+    text-align: center;
+}
+
+.subtitle-page {
+    color: var(--title-color);
+}
+
+.title-delete {
+    color: var(--delete-color);
+}
+
+.input-text {
+    font-weight: 600;
+}
+
+.button-sucess {
+    background-color: var(--text-color);
+    color: var(--sucess-color);
+    border-color: var(--sucess-color);
+}
+
+.button-sucess:hover {
+    background-color: var(--sucess-color);
+    color: var(--text-color);
+    border-color: var(--sucess-color);
+}
+
+.button-info {
+    background-color: var(--text-color);
+    color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+.button-info:hover {
+    background-color: var(--info-color);
+    color: var(--text-color);
+    border-color: var(--info-color);
+}
+
+.button-delete {
+    background-color: var(--text-color);
+    color: var(--delete-color);
+    border-color: var(--delete-color);
+}
+
+.button-delete:hover {
+    background-color: var(--delete-color);
+    color: var(--text-color);
+    border-color: var(--delete-color);
+}
+
+.button-return {
+    background-color: var(--text-color);
+    color: var(--return-color);
+    border-color: var(--return-color);
+}
+
+.button-return:hover {
+    background-color: var(--return-color);
+    color: var(--text-color);
+    border-color: var(--return-color);
 }

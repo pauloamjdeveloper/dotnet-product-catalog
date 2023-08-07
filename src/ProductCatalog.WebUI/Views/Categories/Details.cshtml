@@ -1,6 +1,6 @@
 ﻿@model ProductCatalog.Application.DTOs.CategoryDTO
 
-<h3>Detalhes da Categoria</h3>
+<h3 class="subtitle-page">Detalhes da Categoria</h3>
 
 <div>
     <hr />
@@ -13,7 +13,11 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-success">Editar</a> |
-    <a asp-action="Index">Retornar a Lista</a>
+<div class="form-group mt-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" title="Editar" class="btn button-sucess">
+        <span><i class="fa-solid fa-pen-to-square"></i></span>
+    </a> |
+    <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
 </div>
