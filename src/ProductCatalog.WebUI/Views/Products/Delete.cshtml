@@ -1,8 +1,8 @@
 ﻿@model ProductCatalog.Application.DTOs.ProductDTO
 
-<h3>Excluir Produto</h3>
+<h3 class="subtitle-page">Excluir Produto</h3>
 
-<h4>Tem certeza de que deseja excluir isso?</h4>
+<h4 class="title-delete">Tem certeza de que deseja excluir isso?</h4>
 <div>
     <hr />
     <dl class="row">
@@ -27,8 +27,11 @@
     </dl>
 
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Excluir" class="btn btn-outline-danger" /> |
-        <a asp-action="Index">Retornar a lista</a>
+        <button type="submit" title="Excluir" class="btn button-delete">
+            <i class="fa-solid fa-trash-can"></i>
+        </button> |
+        <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
     </form>
 </div>

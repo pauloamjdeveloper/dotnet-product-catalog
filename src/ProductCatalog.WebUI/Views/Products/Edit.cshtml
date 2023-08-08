@@ -1,6 +1,6 @@
 ﻿@model ProductCatalog.Application.DTOs.ProductDTO
 
-<h3>Editar Produto</h3>
+<h3 class="subtitle-page">Editar Produto</h3>
 
 <hr />
 <div class="row">
@@ -9,48 +9,50 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Nome</label>
+                <label asp-for="Name" class="control-label input-text">Nome</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Descrição</label>
+                <label asp-for="Description" class="control-label input-text">Descrição</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Image" class="control-label">Imagem</label>
+                <label asp-for="Image" class="control-label input-text">Imagem</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Price" class="control-label">Preço</label>
+                <label asp-for="Price" class="control-label input-text">Preço</label>
                 <input asp-for="Price" asp-format="{0:N2}" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Stock" class="control-label">Estoque</label>
+                <label asp-for="Stock" class="control-label input-text">Estoque</label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label">Categoria</label>
+                <label asp-for="CategoryId" class="control-label input-text">Categoria</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-outline-success" />
+            <div class="form-group mt-2">
+                @*<input type="submit" value="Salvar" class="btn btn-outline-success" />*@
+                <button type="submit" value="Salvar" title="Salvar" class="btn button-sucess">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                </button> |
+                <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Retornar a lista</a>
 </div>
