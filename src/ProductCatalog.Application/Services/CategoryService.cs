@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ProductCatalog.Application.DTOs;
 using ProductCatalog.Application.Interfaces;
+using ProductCatalog.Application.Utilities;
 using ProductCatalog.Domain.Entities;
 using ProductCatalog.Domain.Interfaces;
 
@@ -15,6 +16,16 @@ namespace ProductCatalog.Application.Services
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;
+        }
+
+        public async Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize)
+        {
+            var categories = await _categoryRepository.GetCategories();
+            var categoryDTOs = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
+
+            var paginatedCategories = PaginatedList<CategoryDTO>.Create(categoryDTOs, pageNumber, pageSize);
+
+            return paginatedCategories;
         }
 
         public async Task<IEnumerable<CategoryDTO>> GetCategories()

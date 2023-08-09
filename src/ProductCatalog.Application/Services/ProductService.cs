@@ -4,6 +4,7 @@ using ProductCatalog.Application.DTOs;
 using ProductCatalog.Application.Interfaces;
 using ProductCatalog.Application.Products.Commands;
 using ProductCatalog.Application.Products.Queries;
+using ProductCatalog.Application.Utilities;
 using ProductCatalog.Domain.Interfaces;
 
 namespace ProductCatalog.Application.Services
@@ -21,6 +22,16 @@ namespace ProductCatalog.Application.Services
             _productRepository = productRepository;
         }
 
+        public async Task<PaginatedList<ProductDTO>> GetProductsPaginated(int pageNumber, int pageSize)
+        {
+            var products = await _productRepository.GetProductsAsync();
+            var productDTOs = _mapper.Map<IEnumerable<ProductDTO>>(products);
+
+            var paginatedProducts = PaginatedList<ProductDTO>.Create(productDTOs, pageNumber, pageSize);
+
+            return paginatedProducts;
+        }
+
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
             var products = await _productRepository.GetProductsAsync();
@@ -28,7 +39,6 @@ namespace ProductCatalog.Application.Services
 
             foreach (var productDTO in productDTOs)
             {
-                // Buscar o nome da categoria pelo ID do relacionamento e atribuir à propriedade CategoryName
                 var product = products.FirstOrDefault(p => p.Id == productDTO.Id);
                 if (product != null && product.Category != null)
                 {

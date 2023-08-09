@@ -1,9 +1,12 @@
 ﻿using ProductCatalog.Application.DTOs;
+using ProductCatalog.Application.Utilities;
 
 namespace ProductCatalog.Application.Interfaces
 {
     public interface ICategoryService
     {
+        Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize);
+
         Task<IEnumerable<CategoryDTO>> GetCategories();
 
         Task<CategoryDTO> GetById(int? id);

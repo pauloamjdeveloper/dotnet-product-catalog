@@ -20,10 +20,10 @@ namespace ProductCatalog.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 4)
         {
-            var products = await _productService.GetProducts();
-            return View(products);
+            var paginatedProducts = await _productService.GetProductsPaginated(pageNumber, pageSize);
+            return View(paginatedProducts);
         }
 
         [HttpGet()]
