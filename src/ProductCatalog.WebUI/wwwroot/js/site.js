@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿let filterButton = document.getElementById("filterButton");
 
-// Write your JavaScript code.
+filterButton.addEventListener("click", function () {
+    let filterInput = document.getElementById("filterInput");
+    let filterValue = encodeURIComponent(filterInput.value);
+
+    let pageNumber = 1;
+    let url = `${indexUrl}?pageNumber=${pageNumber}&filter=${filterValue}`;
+
+    window.location.href = url;
+});

@@ -13,17 +13,23 @@
     <h2 class="title-page">@ViewData["Title"]</h2>
 </div>
 <hr />
-<div class="row">
-    <div class="col-md-12">
-        <div>
-            <div class="pull-left">
-                <a asp-action="Create" class="btn button-sucess">
-                    <span title="Adicionar Produto"><i class="fa-solid fa-square-plus"></i> Adicionar</span>
-                </a>
-            </div>
-        </div>
+<div class="row mb-4">
+    <div class="col-md-3">
+        <input type="text" id="filterInput" class="form-control" placeholder="Filtrar por nome">
+    </div>
+    <div class="col-md-6 text-right">
+        <button id="filterButton" class="btn button-info">
+            <span title="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button> |
+        <a asp-action="Index" class="btn button-delete">
+            <span title="Limpar Filtro"><i class="fa-solid fa-xmark"></i></span>
+        </a> |
+        <a asp-action="Create" class="btn button-sucess">
+            <span title="Adicionar Produto"><i class="fa-solid fa-square-plus"></i> Adicionar</span>
+        </a>
     </div>
 </div>
+<hr />
 <div class="d-flex justify-content-center">
     <nav aria-label="Paginação dos Produtos">
         <ul class="pagination">
@@ -100,11 +106,9 @@
                         <a asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="btn button-sucess">
                             <span><i class="fa-solid fa-pen-to-square"></i></span>
                         </a>
-
                         <a asp-action="Details" asp-route-id="@item.Id" title="Detalhes" class="btn button-info">
                             <span><i class="fa-solid fa-magnifying-glass"></i></span>
                         </a>
-
                         <a asp-action="Delete" asp-route-id="@item.Id" title="Excluir" class="btn button-delete">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </a>
@@ -114,3 +118,9 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script>
+        let indexUrl = "@Url.Action("Index")";
+    </script>
+}

@@ -18,10 +18,15 @@ namespace ProductCatalog.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize)
+        public async Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize, string filter)
         {
             var categories = await _categoryRepository.GetCategories();
             var categoryDTOs = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                categoryDTOs = categoryDTOs.Where(c => c.Name.Contains(filter, StringComparison.OrdinalIgnoreCase));
+            }
 
             var paginatedCategories = PaginatedList<CategoryDTO>.Create(categoryDTOs, pageNumber, pageSize);
 

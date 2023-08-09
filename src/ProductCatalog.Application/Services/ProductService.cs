@@ -22,11 +22,17 @@ namespace ProductCatalog.Application.Services
             _productRepository = productRepository;
         }
 
-        public async Task<PaginatedList<ProductDTO>> GetProductsPaginated(int pageNumber, int pageSize)
+        public async Task<PaginatedList<ProductDTO>> GetProductsPaginated(int pageNumber, int pageSize, string filter)
         {
             var products = await _productRepository.GetProductsAsync();
-            var productDTOs = _mapper.Map<IEnumerable<ProductDTO>>(products);
 
+            if (!string.IsNullOrEmpty(filter))
+            {
+                products = products.Where(p => p.Name.Contains(filter, StringComparison.OrdinalIgnoreCase));
+            }
+
+            var productDTOs = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            
             var paginatedProducts = PaginatedList<ProductDTO>.Create(productDTOs, pageNumber, pageSize);
 
             return paginatedProducts;

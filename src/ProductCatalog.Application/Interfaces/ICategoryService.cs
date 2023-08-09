@@ -5,7 +5,7 @@ namespace ProductCatalog.Application.Interfaces
 {
     public interface ICategoryService
     {
-        Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize);
+        Task<PaginatedList<CategoryDTO>> GetCategoriesPaginated(int pageNumber, int pageSize, string filter);
 
         Task<IEnumerable<CategoryDTO>> GetCategories();
 
