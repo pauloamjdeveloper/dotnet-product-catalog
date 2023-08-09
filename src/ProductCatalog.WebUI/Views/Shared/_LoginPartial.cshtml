@@ -2,6 +2,7 @@
 {
     <li class="nav-item">
         <a class="nav-link text-capitalize text-write" asp-area="" asp-controller="Account" asp-action="Logout">
+            <i class="fa-solid fa-user"></i>
             @Context.User.Identity.Name - Logout
         </a>
     </li>
@@ -9,6 +10,9 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-capitalize text-write" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+        <a class="nav-link text-capitalize text-write" asp-area="" asp-controller="Account" asp-action="Login">
+            <i class="fa-solid fa-user"></i>
+            Login
+        </a>
     </li>
 }

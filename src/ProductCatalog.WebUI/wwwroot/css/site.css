@@ -39,6 +39,11 @@ body {
     color: var(--delete-color);
 }
 
+.title-center {
+    display: flex;
+    justify-content: center;
+}
+
 .input-text {
     font-weight: 600;
 }

@@ -1,28 +1,43 @@
 ﻿@model ProductCatalog.WebUI.ViewModels.RegisterViewModel
 
-<h3>Register User</h3>
+<h3 class="title-center subtitle-page">Registrar Usuário</h3>
 
-<div class="row">
-    <div class="col-md-12">
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 offset-md-1">
         <form asp-controller="Account" asp-action="Register" method="post">
+            
             <div asp-validation-summary="All" class="text-danger"></div>
+            
             <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Email">E-mail</label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password">Senha</label>
+                <div class="col-md-10">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <label asp-for="ConfirmPassword">Comfirmar Senha</label>
+                <div class="col-md-10">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
             </div>
-            <button type="submit" class="btn btn-outline-dark">Register</button>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-link">Return</a>
+            
+            <div class="form-group mt-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="form-control btn button-sucess">Registrar</button>
+                    <a asp-controller="Home" asp-action="Index" class="form-control btn button-return mt-2">Retornar</a>
+                </div>
+            </div>
         </form>
     </div>
 </div>
