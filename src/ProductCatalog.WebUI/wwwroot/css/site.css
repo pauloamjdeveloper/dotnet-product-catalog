@@ -95,3 +95,11 @@ body {
     color: var(--text-color);
     border-color: var(--return-color);
 }
+.carousel-element {
+    height: 350px;
+}
+
+.carousel-text {
+    text-shadow: 0.2em 0.2em 0.2em var(--return-color);
+    font-weight: 700;
+}
