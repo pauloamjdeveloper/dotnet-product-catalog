@@ -1,6 +1,6 @@
 ﻿@model ProductCatalog.Application.DTOs.CategoryDTO
 
-<h3 class="subtitle-page">Excluir Categoria</h3>
+<h3 class="subtitle-page text-center">Excluir Categoria</h3>
 
 <h4 class="title-delete">Tem certeza de que deseja excluir isso?</h4>
 
@@ -14,14 +14,16 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
-
+    <hr />
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <button type="submit" title="Excluir" class="btn button-delete">
-            <i class="fa-solid fa-trash-can"></i>
-        </button> | 
-        <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
-            <i class="fa-solid fa-arrow-left"></i>
-        </a>
+        <div class="form-group mt-2 text-center">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" title="Excluir" class="btn button-delete">
+                <i class="fa-solid fa-trash-can"></i>
+            </button> |
+            <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
     </form>
 </div>

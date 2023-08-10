@@ -1,6 +1,6 @@
 ﻿@model ProductCatalog.Application.DTOs.CategoryDTO
 
-<h3 class="subtitle-page">Editar Categoria</h3>
+<h3 class="subtitle-page text-center">Editar Categoria</h3>
 
 <hr />
 
@@ -12,8 +12,13 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group mt-2">
-                <button type="submit" value="Salvar" title="Salvar" class="btn button-sucess">
+
+            <div class="text-center">
+                <hr />
+            </div>
+
+            <div class="form-group mt-2 text-center">
+                <button type="submit" value="Salvar" title="Salvar" class="btn button-success">
                     <i class="fa-solid fa-floppy-disk"></i>
                 </button> |
                 <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
@@ -21,6 +26,5 @@
                 </a>
             </div>
         </form>
-
     </div>
 </div>

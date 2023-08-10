@@ -48,13 +48,13 @@ body {
     font-weight: 600;
 }
 
-.button-sucess {
+.button-success {
     background-color: var(--text-color);
     color: var(--sucess-color);
     border-color: var(--sucess-color);
 }
 
-.button-sucess:hover {
+.button-success:hover {
     background-color: var(--sucess-color);
     color: var(--text-color);
     border-color: var(--sucess-color);

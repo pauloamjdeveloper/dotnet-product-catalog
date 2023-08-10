@@ -1,37 +1,51 @@
 ﻿@model ProductCatalog.Application.DTOs.ProductDTO
 
-<h3 class="subtitle-page">Deatlhes do Produto</h3>
+<h3 class="subtitle-page text-center">Deatlhes do Produto</h3>
 <div>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Image)</dt>
-        <dd class="col-sm-10">
-            @if (!ViewBag.ImageExist)
-            {
-                <img src="~/images/noimage.png" class="rounded-circle" height="300" width="300" asp-append-version="true" />
-            }
-            else
-            {
-                <img src="~/images/@Model.Image" class="rounded-circle" height="300" width="300" asp-append-version="true" />
-            }
-        </dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Price)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Price)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Stock)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Stock)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Category)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.CategoryId)</dd>
-    </dl>
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+                <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Image)</dt>
+                <dd>
+                    @if (!ViewBag.ImageExist)
+                    {
+                        <img src="~/images/noimage.png" class="rounded" height="200" width="200" asp-append-version="true" />
+                    }
+                    else
+                    {
+                        <img src="~/images/@Model.Image" class="rounded" height="200" width="200" asp-append-version="true" />
+                    }
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-md-6">
+            <dl>
+                <dt>@Html.DisplayNameFor(model => model.Price)</dt>
+                <dd>@Html.DisplayFor(model => model.Price)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Stock)</dt>
+                <dd>@Html.DisplayFor(model => model.Stock)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Category)</dt>
+                <dd>@Html.DisplayFor(model => model.CategoryId)</dd>
+            </dl>
+        </div>
+    </div>
 </div>
-<div class="form-group mt-2">
-    <a asp-action="Edit" asp-route-id="@Model.Id" title="Editar" class="btn button-sucess">
+<hr/>
+<div class="form-group mt-4 text-center">
+    <a asp-action="Edit" asp-route-id="@Model.Id" title="Editar" class="btn button-success">
         <span><i class="fa-solid fa-pen-to-square"></i></span>
-    </a> |
-    <a asp-action="Index" title="Retornar ao Lista" class="btn button-return">
+    </a> | 
+    <a asp-action="Index" title="Retornar à Lista" class="btn button-return">
         <i class="fa-solid fa-arrow-left"></i>
     </a>
 </div>
