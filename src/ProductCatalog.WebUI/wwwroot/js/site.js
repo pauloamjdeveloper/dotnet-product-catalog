@@ -9,3 +9,13 @@ filterButton.addEventListener("click", function () {
 
     window.location.href = url;
 });
+
+window.addEventListener('load', function () {
+    let spinnerOverlay = document.getElementById('spinnerOverlay');
+    spinnerOverlay.style.display = 'block';
+
+    setTimeout(function () {
+        spinnerOverlay.style.display = 'none';
+    }, 500);
+});
+
