@@ -6,6 +6,7 @@ using ProductCatalog.Application.Interfaces;
 
 namespace ProductCatalog.WebUI.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
@@ -98,6 +99,7 @@ namespace ProductCatalog.WebUI.Controllers
             return View(productDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost(), ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
