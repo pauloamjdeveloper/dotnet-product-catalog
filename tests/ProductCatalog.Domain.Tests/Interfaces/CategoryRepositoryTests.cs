@@ -29,7 +29,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
         }
 
         [Fact(DisplayName = "GetCategories - Return Empty List When No Categories Exist")]
-        public async Task CategoryRepository_GetCategories_Should_Return_Empty_List_When_No_Categories_Exist()
+        public async Task CategoryRepository_GetCategories_ShouldReturnEmptyListWhenNoCategoriesExist()
         {
             var emptyCategoriesList = new List<Category>();
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
@@ -60,7 +60,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
         }
 
         [Fact(DisplayName = "GetById - Returns null when id does not exist")]
-        public async Task CategoryRepository_GetById_ShouldReturnNullWhenIdDoesNotExist()
+        public async Task CategoryRepository_GetById_ShouldReturnNullWhenCategoryIdDoesNotExist()
         {
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
 
@@ -100,7 +100,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
         }
 
         [Fact(DisplayName = "Create - Returns Null When Insert Fails")]
-        public async Task CategoryRepository_Create_ShouldReturnNullWhenInsertFails()
+        public async Task CategoryRepository_Create_ShouldReturnNullWhenInsertCategoryFails()
         {
 
             var newCategoryName = "Livros";
@@ -137,7 +137,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
         [Fact(DisplayName = "Update - Returns Null When Category Not Found")]
         public async Task CategoryRepository_Update_ShouldReturnNullWhenCategoryNotFound()
         {
-            var nonExistingCategory = new Category(100, "No Existing Category");
+            var noExistingCategory = new Category(100, "No Existing Category");
 
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
             categoryRepositoryMock.Setup(repo => repo.Update(It.IsAny<Category>()))
@@ -145,13 +145,13 @@ namespace ProductCatalog.Domain.Tests.Interfaces
 
             ICategoryRepository categoryRepository = categoryRepositoryMock.Object;
 
-            var updatedCategoryResult = await categoryRepository.Update(nonExistingCategory);
+            var updatedCategoryResult = await categoryRepository.Update(noExistingCategory);
 
             Assert.Null(updatedCategoryResult);
         }
 
         [Fact(DisplayName = "Remove - Returns The Existing Category Delete")]
-        public async Task CategoryRepository_Remove_Should_Remove_Category_And_Return_Removed_Category()
+        public async Task CategoryRepository_Remove_ShouldRemoveCategoryAndReturnRemovedCategory()
         {
             var existingCategory = new Category(1, "Material Escola");
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
@@ -172,7 +172,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
         [Fact(DisplayName = "Remove - Returns Null When Category Not Found")]
         public async Task CategoryRepository_Remove_ShouldReturnNullWhenCategoryNotFound()
         {
-            var nonExistingCategory = new Category(100, "No Existing Category");
+            var noExistingCategory = new Category(100, "No Existing Category");
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
 
             categoryRepositoryMock.Setup(repo => repo.Remove(It.IsAny<Category>()))
@@ -180,7 +180,7 @@ namespace ProductCatalog.Domain.Tests.Interfaces
 
             ICategoryRepository categoryRepository = categoryRepositoryMock.Object;
 
-            var removedCategoryResult = await categoryRepository.Remove(nonExistingCategory);
+            var removedCategoryResult = await categoryRepository.Remove(noExistingCategory);
 
             Assert.Null(removedCategoryResult);
         }
