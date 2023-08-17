@@ -4,7 +4,7 @@ using ProductCatalog.Domain.Validation;
 
 namespace ProductCatalog.Domain.Tests.Entities
 {
-    public class CategoryUnitTest
+    public class CategoryTest
     {
         [Fact(DisplayName = "Create Category With Valid State")]
         public void CreateCategory_WithValidParameters_ResultObjectValidState()
