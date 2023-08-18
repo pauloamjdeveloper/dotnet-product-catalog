@@ -30,8 +30,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update("C", "Caderno espiral com 100 fôlhas", 8.99m, 60, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, too short, minimum 3 characters");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, too short, minimum 3 characters");
         }
 
         [Fact(DisplayName = "Update - Product With Null Name")]
@@ -44,8 +43,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update(null, "Caderno espiral com 100 fôlhas", 8.99m, 60, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, Name is required");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, Name is required");
         }
 
 
@@ -59,8 +57,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update("Caderno Espiral", "Cade", 8.99m, 60, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid description, too short, minimum 5 characters");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid description, too short, minimum 5 characters");
         }
 
         [Fact(DisplayName = "Update - Product With Null Description")]
@@ -73,8 +70,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update("Caderno Espiral", null, 8.99m, 60, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid description. Description is required");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid description. Description is required");
         }
 
         [Theory(DisplayName = "Update - Product With Invalid Price")]
@@ -90,8 +86,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update("Caderno Espira", "Caderno espiral com 100 fôlhas", price, 560, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid price value");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid price value");
         }
 
         [Theory(DisplayName = "Update - Product With Negative Stock Value")]
@@ -107,8 +102,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 product.Update("Valid Name", "Caderno espiral com 100 fôlhas", 8.99m, stock, "caderno-1.png", 1);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid stock value");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid stock value");
         }
 
         [Fact(DisplayName = "Update - Product With Null Image Name")]

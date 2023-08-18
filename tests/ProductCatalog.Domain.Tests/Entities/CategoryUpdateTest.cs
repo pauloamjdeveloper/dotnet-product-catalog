@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using ProductCatalog.Domain.Entities;
 using ProductCatalog.Domain.Validation;
-using System.Reflection;
 
 namespace ProductCatalog.Domain.Tests.Entities
 {
@@ -30,8 +29,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 category.Update("Ma");
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, too short, minimum 3 characters");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, too short, minimum 3 characters");
         }
 
         [Fact(DisplayName = "Update - Category Name With Null Value")]
@@ -44,8 +42,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 category.Update(null);
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, Name is required");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, Name is required");
         }
     }
 }

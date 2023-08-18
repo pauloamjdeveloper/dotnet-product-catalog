@@ -42,8 +42,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 }
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, Name is required");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, Name is required");
         }
 
         [Fact(DisplayName = "ValidateDomain - Category With Invalid Name")]
@@ -66,8 +65,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 }
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, too short, minimum 3 characters");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, too short, minimum 3 characters");
         }
 
         [Fact(DisplayName = "ValidateDomain - Category With Null Name")]
@@ -90,8 +88,7 @@ namespace ProductCatalog.Domain.Tests.Entities
                 }
             };
 
-            action.Should().Throw<DomainExceptionValidation>()
-                .WithMessage("Invalid name, Name is required");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Invalid name, Name is required");
         }
     }
 }
