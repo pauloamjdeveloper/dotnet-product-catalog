@@ -13,6 +13,10 @@ namespace ProductCatalog.Domain.Entities
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        public Product()
+        {
+        }
+
         public Product(string name, string description, decimal price, int stock, string image)
         {
             ValidateDomain(name, description, price, stock, image);
