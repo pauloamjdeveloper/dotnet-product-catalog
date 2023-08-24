@@ -14,11 +14,12 @@ function hideSpinner() {
     }
 }
 
+
 window.addEventListener('load', function () {
     showSpinner();
     setTimeout(function () {
         hideSpinner();
-    }, 1000);
+    }, 1500);
 });
 
 let filterButton = document.getElementById("filterButton");
@@ -36,5 +37,5 @@ filterButton.addEventListener("click", function () {
 
     setTimeout(function () {
         hideSpinner();
-    }, 1000);
+    }, 1500);
 });
