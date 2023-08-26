@@ -5,6 +5,8 @@
     --sucess-color: #32CD32;
     --info-color: #00BFFF;
     --return-color: #363636;
+    --icon-color: #FFA500;
+    --icon-info-color: #00FFFF;
 }
 
 html {
@@ -115,4 +117,16 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+}
+
+.icon-user {
+    margin-right: 10px;
+}
+
+.icon-navbar {
+    color: var(--icon-color);
+}
+
+.icon-login {
+    color: var(--icon-info-color);
 }
