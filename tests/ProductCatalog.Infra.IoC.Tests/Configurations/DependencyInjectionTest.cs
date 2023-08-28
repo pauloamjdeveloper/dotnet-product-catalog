@@ -44,7 +44,7 @@ namespace ProductCatalog.Infra.IoC.Tests.Configurations
             Assert.NotNull(serviceProvider.GetService<ICategoryService>());
         }
 
-        [Fact(DisplayName = "Services Must Not Be Validated")]
+        [Fact(DisplayName = "AddInfrastructure - Services Must Not Be Validated")]
         public void DependencyInjection_AddInfrastructure_ServicesShouldBeRegisteredAsNull()
         {
             var services = new ServiceCollection();
