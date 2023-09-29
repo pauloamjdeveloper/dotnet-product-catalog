@@ -19,13 +19,13 @@ namespace ProductCatalog.WebUI.Controllers
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 4, string filter = null)
         {
             var paginatedCategories = await _categoryService.GetCategoriesPaginated(pageNumber, pageSize, filter);
-            return View(paginatedCategories);
+            return View("Index", paginatedCategories);
         }
 
         [HttpGet()]
         public IActionResult Create() 
         {
-            return View();
+            return View("Create");
         }
 
         [HttpPost]
@@ -66,16 +66,15 @@ namespace ProductCatalog.WebUI.Controllers
                 try
                 {
                     await _categoryService.Update(categoryDto);
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
                 {
-                    throw;
+                    ModelState.AddModelError("", "Failed to update");
                 }
-
-                return RedirectToAction(nameof(Index));
             }
 
-            return View(categoryDto);
+            return View("Edit", categoryDto);
         }
 
         [Authorize(Roles = "Admin")]
@@ -101,6 +100,13 @@ namespace ProductCatalog.WebUI.Controllers
         [HttpPost(), ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var category = await _categoryService.GetById(id);
+            
+            if (category == null)
+            {
+                return NotFound();
+            }
+
             await _categoryService.Remove(id);
             return RedirectToAction("Index");
         }
