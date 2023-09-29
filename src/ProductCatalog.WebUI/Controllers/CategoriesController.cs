@@ -18,6 +18,8 @@ namespace ProductCatalog.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 4, string filter = null)
         {
+            if (pageNumber < 1) return NotFound();
+
             var paginatedCategories = await _categoryService.GetCategoriesPaginated(pageNumber, pageSize, filter);
             return View("Index", paginatedCategories);
         }
